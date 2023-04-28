@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects - Reference vs Value</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./navigation.js"></script>
+</head>
+
+<body>
+  <header id="top-nav">
+    <a class="brand" href="#">Object Equality: Reference vs Value</a>
+    <nav>
+      <a href="#values">Values</a>
+      <a href="#references">References</a>
+      <a href="#shallow">Shallow Copies</a>
+      <a href="#comparisons">Comparing Copies</a>
+      <a href="#deep">Deep Copies</a>
+    </nav>
+  </header>
+  <div id="root">
+    <h2>Comparing Objects</h2>
+    <p>
+      Alex and Max clearly share the same car. So if you asked each of them to point to their car, they'll point to the
+      same car. But the stranger, who has the same make, model, etc. car, will not point to the same car as Alex and
+      Max.
+    </p>
+    <p>
+      We can make copies of objects, but we may also need to check, whether two copies are made of the same parts. This
+      can be done in a couples of ways. We can compare the <strong>structure</strong> of two objects, or we can compare
+      the <strong>values</strong> of the two objects.
+    </p>
+    <p>
+      Comparing the structure would be like asking two people if they both owned a pickup truck. This involves ensuring
+      that both objects have the same <strong>properties</strong>, and disregarding the values of those properties.
+    </p>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>
