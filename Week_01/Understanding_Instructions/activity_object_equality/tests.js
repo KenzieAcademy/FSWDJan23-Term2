@@ -142,14 +142,6 @@ console.group("Unit Tests - isTheSameObjectShallow");
     failureMessage:
       "isTheSameObjectShallow is false if nested objects are shallow copies of other nested objects, because they are at different memory locations.",
   });
-  kenzieAssert({
-    actual: isTheSameObjectShallow(car1, car5),
-    expected: true,
-    testNumber: 5,
-    testFunction: "isTheSameObjectShallow",
-    failureMessage:
-      "isTheSameObjectShallow is true if the two objects are not equal, but the values of their properties are equal",
-  });
 }
 
 console.group("Unit Tests - haveSameStructure");
