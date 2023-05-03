@@ -1,0 +1,10 @@
+.box {
+  width: 150px;
+  height: 150px;
+  background-color: darkred;
+  outline: 2px solid black;
+}
+
+.box.blue {
+  background-color: blue;
+}
