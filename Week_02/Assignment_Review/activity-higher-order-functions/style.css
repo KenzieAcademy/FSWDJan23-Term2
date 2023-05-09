@@ -1,0 +1,13 @@
+/* Write your CSS Here. */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-5 {
+  gap: 5px;
+}
+
+.user-pic {
+  width: 64px;
+}
