@@ -1,0 +1,10 @@
+.roster-form {
+  display: flex;
+  justify-content: center;
+}
+
+.delete {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}
