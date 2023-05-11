@@ -1,0 +1,19 @@
+.roster-form {
+  display: flex;
+  justify-content: center;
+}
+.roster-row-headshot {
+  width: 30px;
+  display: inline;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid gray;
+}
