@@ -1,0 +1,12 @@
+.text-black {
+  color: black;
+}
+
+.text-red {
+  color: red;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,19 @@
+.trading-card {
+  width: 250px;
+  height: 400px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-photo-container {
+  width: 226px;
+  height: 226px;
+}
+
+.card-photo {
+  width: 100%;
+}
