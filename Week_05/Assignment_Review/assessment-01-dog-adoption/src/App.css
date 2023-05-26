@@ -1,0 +1,24 @@
+/* TODO: Add your CSS Styling here */
+.adoptable {
+  height: 200px;
+}
+
+.adoptable img {
+  height: 100%;
+  max-height: 200px;
+}
+
+.kennel {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+.dog {
+  flex-basis: 20%;
+  flex: 1;
+}
+
+.dog img {
+  max-height: 100px;
+}
