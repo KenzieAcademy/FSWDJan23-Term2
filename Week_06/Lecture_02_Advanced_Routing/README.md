@@ -7,6 +7,8 @@ This was quite literally the first time I used vite to create a React app, so I'
 - Running the app
 - The default port the app runs on
 - JSX files
+- Index -> Main
+- Default CSS
 - Speed
 
 ### Creating with Vite
@@ -27,6 +29,12 @@ This project, by default, runs on port `5173` apparently. Vite also doesn't open
 
 ### JSX vs JS
 The first major difference is in Vite's use of `.jsx` files over `.js`. Technically, this is more accurate as we've been writing JSX this whole time. The only real difference you should find is the file extensions themselves.
+
+### Index -> Main
+If you're looking for the index.js file, it's now `main.jsx`.
+
+### Default CSS
+The default CSS is MUCH heavier. But realistically we've been deleting the preset CSS anyway...
 
 ### Speed
 The best part about Vite? No more waiting for the app to be created or for the app to start

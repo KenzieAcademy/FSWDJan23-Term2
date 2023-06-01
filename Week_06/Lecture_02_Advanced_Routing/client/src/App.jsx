@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import { CharacterDetails, Header } from "./components";
+import { Characters, HomePage } from "./pages";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+
+const CHARACTERS_URL = "https://swapi.dev/api/people";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [people, setPeople] = useState([]);
+  const [previous, setPrevious] = useState();
+  const [next, setNext] = useState();
+
+  function fetchPeople(url = CHARACTERS_URL) {
+    setPeople([]);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setPrevious(data.previous);
+        setNext(data.next);
+        setPeople(data.results);
+      })
+      .catch((error) => console.log(":( ", error));
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ToastContainer />
+      <Header />
+      <Routes>
+        <Route path="" element={<HomePage />} />
+        <Route
+          path="people"
+          element={
+            <Characters
+              next={next}
+              previous={previous}
+              people={people}
+              fetchPeople={fetchPeople}
+            />
+          }
+        >
+          <Route
+            path=":characterId"
+            element={<CharacterDetails people={people} />}
+          />
+        </Route>
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
