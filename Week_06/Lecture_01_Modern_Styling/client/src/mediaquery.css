@@ -1,0 +1,61 @@
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 5px 15px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 600px) {
+  /* Covers that weird middle-ground between "mobile" and "tablet" */
+  .container.fluid {
+    max-width: 768px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* Styling for "tablets" through "laptops"*/
+  .container {
+    max-width: 768px;
+    padding: 5px 25px;
+  }
+
+  .container.fluid {
+    max-width: 992px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  /* Styling for "laptops" through "desktops" */
+  .container {
+    max-width: 992px;
+    padding: 5px 30px;
+  }
+
+  .container.fluid {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  /* Styling for "dekstops" and larger */
+  .container {
+    max-width: 1200px;
+    padding: 5px 35px;
+  }
+
+  .container.fluid {
+    max-width: 1400px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  /* Styling for extra large screens of any kind */
+  .container {
+    max-width: 1400px;
+    padding: 10px 35px;
+  }
+
+  .container.fluid {
+    max-width: 100%;
+  }
+}

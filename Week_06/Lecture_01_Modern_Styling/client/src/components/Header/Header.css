@@ -1,0 +1,33 @@
+/* header {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+.brand,
+.brand:visited,
+header a,
+header a:visited {
+  text-decoration: none;
+}
+
+.brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+}
+
+header nav,
+.links {
+  display: flex;
+  flex-direction: row;
+}
+
+.links nav {
+  gap: 15px;
+}
+
+.links * {
+  justify-content: space-between;
+  color: rgb(48, 48, 48);
+} */
