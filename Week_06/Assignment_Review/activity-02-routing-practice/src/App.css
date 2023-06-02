@@ -1,0 +1,10 @@
+/* Your CSS Here */
+
+.list {
+  list-style: none;
+  padding: 0px;
+}
+
+label {
+  display: block;
+}
