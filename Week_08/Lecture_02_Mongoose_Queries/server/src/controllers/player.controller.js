@@ -1,4 +1,5 @@
 import Player from "../models/player.model";
+import { getThirtyYearBirthday } from "../utils/age.utils";
 
 export async function createPlayerHandler(req, res, next) {
   const { firstName, lastName, jerseyNum, birthday, position } = req.body;
@@ -47,11 +48,8 @@ export async function findAllPlayersHandler(req, res, next) {
      * limits, etc. (commonly used with pagination) to make this
      * endpoint more "multi-purpose"
      */
-    let { limit, offset, position } = req.query;
-    const queryParams = {};
-    if (position) {
-      queryParams.position = position;
-    }
+    let { limit, offset } = req.query;
+
     /**
      * To run a search query for multiple documents in a given collection,
      * we use the model's `.find()` method.
@@ -63,9 +61,7 @@ export async function findAllPlayersHandler(req, res, next) {
     offset = offset ? Number(offset) : 0;
     limit = limit ? Number(limit) : 20;
 
-    const allPlayerDocuments = await Player.find(queryParams)
-      .skip(offset)
-      .limit(limit);
+    const allPlayerDocuments = await Player.find().skip(offset).limit(limit);
 
     res.json({
       next: `http://localhost:3001/api/players?limit=${limit}&offset=${
@@ -83,7 +79,7 @@ export async function findAllPlayersHandler(req, res, next) {
     next(error);
   }
 }
-export async function findPlayerByNameHandler(req, res, next) {}
+
 export async function findPlayerByIdHandler(req, res, next) {
   const { playerId } = req.params;
   try {
@@ -109,6 +105,81 @@ export async function findPlayerByIdHandler(req, res, next) {
     next(error);
   }
 }
-export async function findPlayersByPositionHandler(req, res, next) {}
-export async function updatePlayerByIdHandler(req, res, next) {}
-export async function deletePlayerByIdHandler(req, res, next) {}
+export async function findPlayersByPositionHandler(req, res, next) {
+  const { position } = req.params;
+  try {
+    const playersAtPosition = await Player.find({
+      position: { $regex: new RegExp(position, "i") },
+    });
+
+    res.json(playersAtPosition);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function findPlayersOverThirtyHandler(req, res, next) {
+  try {
+    const olderThanThirty = await Player.find({
+      birthday: { $lt: getThirtyYearBirthday() },
+    });
+
+    res.json(olderThanThirty);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updatePlayerByIdHandler(req, res, next) {
+  const { playerId } = req.params;
+  const { firstName, lastName, jerseyNum, birthday, position } = req.body;
+  try {
+    /**
+     * Option 1: Kind of don't do this though
+     *  - Find the single document you want to update
+     *  - Update the properties as you would any object
+     *  - Call the `.save()` method to push the changes to the database
+     */
+    // const playerToUpdate = await Player.findById(playerId);
+    // playerToUpdate.firstName = firstName;
+    // playerToUpdate.lastName = lastName;
+    // playerToUpdate.jerseyNum = jerseyNum;
+    // playerToUpdate.birthday = birthday;
+    // playerToUpdate.position = position;
+    // await playerToUpdate.save();
+    /**
+     * Option 2: `.findOneAndUpdate()` or `.findByIdAndUpdate()`
+     */
+    const updatedPlayer = await Player.findByIdAndUpdate(
+      playerId,
+      {
+        firstName,
+        lastName,
+        jerseyNum,
+        birthday,
+        position,
+      },
+      { new: true, runValidators: true }
+    );
+
+    if (updatedPlayer === null) throw { name: "NotFoundError" };
+
+    res.json(updatedPlayer);
+  } catch (error) {
+    next(error);
+  }
+}
+export async function deletePlayerByIdHandler(req, res, next) {
+  const { playerId } = req.params;
+
+  try {
+    // const result = await Player.findByIdAndDelete(playerId);
+    const result = await Player.findOneAndDelete({ _id: playerId });
+
+    if (result === null) throw { name: "NotFoundError" };
+
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+}
