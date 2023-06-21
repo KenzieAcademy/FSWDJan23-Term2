@@ -27,7 +27,9 @@ export async function findAllPlayersHandler(req, res, next) {
     offset = offset ? Number(offset) : 0;
     limit = limit ? Number(limit) : 20;
 
-    const allPlayerDocuments = await Player.find().skip(offset).limit(limit);
+    const allPlayerDocuments = await Player.find(queryParams)
+      .skip(offset)
+      .limit(limit);
 
     res.json({
       next:
