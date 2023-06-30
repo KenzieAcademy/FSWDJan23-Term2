@@ -1,0 +1,15 @@
+.search-bar {
+  position: relative;
+}
+
+.reset-search {
+  position: absolute;
+  border-radius: 50%;
+  font-size: 0.6em;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  border: none;
+  top: calc(50% - 0.8em);
+  right: 10px;
+}

@@ -1,0 +1,19 @@
+.avatar-options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 15px;
+}
+
+.selectable-avatar {
+  flex: 1;
+  max-width: 20%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.selected-avatar {
+  outline: 5px solid #fcc44c;
+  border-radius: 5px;
+}
